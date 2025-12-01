@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import Placeholder from '../ui/Placeholder';
 import logoFull from '../../assets/icons/logo-full.svg';
 
 export default function Header() {

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Instagram } from 'lucide-react';
-import Placeholder from '../ui/Placeholder';
 import logoFull from '../../assets/icons/logo-full.svg';
 
 export default function Footer() {
