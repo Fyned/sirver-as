@@ -1,89 +1,98 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, ArrowRight } from 'lucide-react';
 import logoFull from '../../assets/icons/logo-full.svg';
 
 export default function Footer() {
   return (
-    <footer className="bg-sirver-secondary text-white pt-16 pb-8 border-t border-white/5">
-      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-sirver-secondary text-white pt-20 pb-10 border-t border-white/5 font-sans">
+      <div className="container mx-auto px-4">
         
-        {/* KOLON 1: Logo & Adres */}
-        <div>
-          <div className="w-48 mb-6">
-            <img 
-              src={logoFull} 
-              alt="Sirver A.Ş. Logo" 
-              className="h-12 brightness-0 invert opacity-90" 
-            />
-          </div>
-          <div className="space-y-4 text-gray-400 text-sm">
-            <div className="flex items-start gap-3">
-              <MapPin className="text-sirver-primary mt-1 min-w-[18px]" size={18} />
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          
+          {/* KOLON 1: Logo & Adres */}
+          <div className="space-y-6">
+            <div className="w-48">
+              <img 
+                src={logoFull} 
+                alt="Sirver A.Ş. Logo" 
+                className="h-12 brightness-0 invert opacity-90" 
+              />
+            </div>
+            <div className="text-gray-400 text-sm leading-relaxed flex items-start gap-3">
+              <MapPin className="text-sirver-primary shrink-0 mt-1" size={20} />
               <span>
-                <strong>MERKEZ</strong><br/>
+                <strong>MERKEZ OFİS</strong><br/>
                 Esmira Office Center No:1/49<br/>
                 Musalla Bağları, Gürsesler Sk.<br/>
                 42060 Selçuklu, Konya/TÜRKİYE
               </span>
             </div>
           </div>
-        </div>
 
-        {/* KOLON 2: Hızlı Linkler */}
-        <div>
-          <h4 className="font-heading text-lg font-bold mb-6 text-white">Kurumsal</h4>
-          <ul className="space-y-3 text-gray-400 text-sm">
-            <li><Link to="/" className="hover:text-sirver-primary transition-colors">Anasayfa</Link></li>
-            <li><Link to="/kurumsal" className="hover:text-sirver-primary transition-colors">Hakkımızda</Link></li>
-            <li><Link to="/surdurulebilirlik" className="hover:text-sirver-primary transition-colors">Sürdürülebilirlik</Link></li>
-            <li><Link to="/iletisim" className="hover:text-sirver-primary transition-colors">İletişim & Ulaşım</Link></li>
-          </ul>
-        </div>
+          {/* KOLON 2: Menü */}
+          <div>
+            <h4 className="font-heading text-lg font-bold mb-6 text-white border-b border-white/10 pb-2 inline-block">Kurumsal</h4>
+            <ul className="space-y-3 text-gray-400 text-sm">
+              <li><Link to="/" className="hover:text-sirver-primary transition-colors flex items-center gap-2"><ArrowRight size={14}/> Anasayfa</Link></li>
+              <li><Link to="/kurumsal" className="hover:text-sirver-primary transition-colors flex items-center gap-2"><ArrowRight size={14}/> Hakkımızda</Link></li>
+              <li><Link to="/surdurulebilirlik" className="hover:text-sirver-primary transition-colors flex items-center gap-2"><ArrowRight size={14}/> Sürdürülebilirlik</Link></li>
+              <li><Link to="/iletisim" className="hover:text-sirver-primary transition-colors flex items-center gap-2"><ArrowRight size={14}/> İletişim</Link></li>
+            </ul>
+          </div>
 
-        {/* KOLON 3: Ürünler */}
-        <div>
-          <h4 className="font-heading text-lg font-bold mb-6 text-white">Hizmetlerimiz</h4>
-          <ul className="space-y-3 text-gray-400 text-sm">
-             <li>Endüstriyel Odun Cipsi (G30/G50)</li>
-             <li>Biyokütle Enerji Yakıtı</li>
-             <li>Orman Endüstri Atıkları</li>
-             <li>Lojistik ve Tedarik Zinciri</li>
-          </ul>
-        </div>
+          {/* KOLON 3: Ürünler */}
+          <div>
+            <h4 className="font-heading text-lg font-bold mb-6 text-white border-b border-white/10 pb-2 inline-block">Hizmetlerimiz</h4>
+            <ul className="space-y-3 text-gray-400 text-sm">
+               <li className="flex items-center gap-2"><ArrowRight size={14} className="text-sirver-primary"/> Endüstriyel Odun Cipsi</li>
+               <li className="flex items-center gap-2"><ArrowRight size={14} className="text-sirver-primary"/> Biyokütle Yakıtı</li>
+               <li className="flex items-center gap-2"><ArrowRight size={14} className="text-sirver-primary"/> Orman Endüstri Atıkları</li>
+               <li className="flex items-center gap-2"><ArrowRight size={14} className="text-sirver-primary"/> Lojistik Çözümleri</li>
+            </ul>
+          </div>
 
-        {/* KOLON 4: İletişim */}
-        <div>
-          <h4 className="font-heading text-lg font-bold mb-6 text-white">Bize Ulaşın</h4>
-          <ul className="space-y-4 text-gray-400 text-sm">
-            <li className="flex items-center gap-3">
-              <Phone className="text-sirver-primary" size={18} />
-              <a href="tel:+905309235033" className="hover:text-white transition-colors font-bold text-lg">
-                +90 530 923 50 33
+          {/* KOLON 4: İletişim */}
+          <div>
+            <h4 className="font-heading text-lg font-bold mb-6 text-white border-b border-white/10 pb-2 inline-block">Bize Ulaşın</h4>
+            <ul className="space-y-4 text-gray-400 text-sm">
+              <li className="flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/5 hover:border-sirver-primary/50 transition-colors">
+                <Phone className="text-sirver-primary" size={20} />
+                <a href="tel:+905309235033" className="hover:text-white font-bold text-lg tracking-wide">
+                  +90 530 923 50 33
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="text-sirver-primary" size={18} />
+                <a href="mailto:info@sirver-as.com" className="hover:text-white transition-colors">
+                  info@sirver-as.com
+                </a>
+              </li>
+            </ul>
+            
+            {/* Sosyal Medya */}
+            <div className="mt-8">
+              <span className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-3 block">Bizi Takip Edin</span>
+              <a 
+                href="https://www.instagram.com/sirver_tarim/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-gradient-to-tr from-yellow-500 via-red-500 to-purple-500 p-[2px] rounded-full inline-block hover:scale-110 transition-transform"
+              >
+                <div className="bg-sirver-secondary p-2 rounded-full">
+                  <Instagram size={20} className="text-white" />
+                </div>
               </a>
-            </li>
-            <li className="flex items-center gap-3">
-              <Mail className="text-sirver-primary" size={18} />
-              <a href="mailto:info@sirver-as.com" className="hover:text-white transition-colors">
-                info@sirver-as.com
-              </a>
-            </li>
-          </ul>
-          <div className="flex gap-4 mt-8">
-            <a 
-              href="https://www.instagram.com/sirver_tarim/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-white/10 p-3 rounded-full hover:bg-sirver-primary hover:text-white text-gray-400 transition-all"
-            >
-              <Instagram size={20} />
-            </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="container mx-auto px-4 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-        <p>&copy; 2025 Sirver A.Ş. Tüm hakları saklıdır.</p>
-        <p>Tarım ve Enerji Sektöründe Güçlü Çözüm Ortağınız.</p>
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+          <p>&copy; 2025 Sirver A.Ş. Tüm hakları saklıdır.</p>
+          <div className="mt-2 md:mt-0 flex gap-4">
+            <span>Gizlilik Politikası</span>
+            <span>KVKK Aydınlatma Metni</span>
+          </div>
+        </div>
       </div>
     </footer>
   );
