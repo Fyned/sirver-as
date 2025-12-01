@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Placeholder from '../ui/Placeholder';
+import logoFull from '../../assets/icons/logo-full.svg';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,12 +29,14 @@ export default function Header() {
         
         {/* LOGO ALANI */}
         <Link to="/" className="flex items-center gap-2">
-           {/* Logo gelince burayı img etiketi ile değiştireceğiz */}
-           {/* Önerilen Logo Boyutu: 180x50 px (SVG) */}
-           <div className={scrolled ? "w-32" : "w-40"}>
-             <Placeholder label="LOGO (SVG)" height="h-12" className="bg-opacity-50 border-sirver-primary" />
-           </div>
-        </Link>
+    <img 
+      src={logoFull} 
+      alt="Sirver A.Ş. Logo" 
+      className={`transition-all duration-300 ${scrolled ? "h-10" : "h-12 md:h-14 brightness-0 invert"}`} 
+      // Not: 'brightness-0 invert' sınıfı, şeffaf header'da logoyu beyaz yapar. 
+      // Scroll yapınca (beyaz zemin olunca) bu sınıf kalkar ve orijinal renkli logo görünür.
+    />
+</Link>
 
         {/* MASAÜSTÜ MENÜ */}
         <nav className="hidden md:flex gap-8 items-center">

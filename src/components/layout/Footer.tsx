@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin, Instagram } from 'lucide-react';
 import Placeholder from '../ui/Placeholder';
+import logoFull from '../../assets/icons/logo-full.svg';
 
 export default function Footer() {
   return (
@@ -8,14 +9,14 @@ export default function Footer() {
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
         
         {/* KOLON 1: Logo & Hakkında */}
-        <div>
-          <div className="w-48 mb-6">
-            <Placeholder label="LOGO BEYAZ (SVG)" height="h-12" className="bg-white/10 border-white/20 text-white" />
-          </div>
-          <p className="text-gray-400 text-sm leading-relaxed mb-6">
-            İnşaat sektöründeki köklü tecrübesini enerji sektörüne taşıyan Sirver A.Ş., sürdürülebilir biyokütle tedariğinde Türkiye'nin lider çözüm ortağıdır.
-          </p>
-        </div>
+        <div className="w-48 mb-6">
+  <img 
+    src={logoFull} 
+    alt="Sirver A.Ş. Logo" 
+    className="h-12 brightness-0 invert opacity-90" 
+    // Footer koyu olduğu için logoyu beyazlaştırıyoruz
+  />
+</div>
 
         {/* KOLON 2: Hızlı Linkler */}
         <div>
