@@ -1,4 +1,7 @@
 import Hero from '../components/sections/Hero';
+import Services from '../components/sections/Services';
+import Calculator from '../components/sections/Calculator';
+import References from '../components/sections/References'; // Yeni Import
 import { Helmet } from 'react-helmet-async';
 
 export default function Home() {
@@ -10,13 +13,17 @@ export default function Home() {
       </Helmet>
       
       <main>
+        {/* 1. VİTRİN: Hero Alanı */}
         <Hero />
         
-        {/* Buraya sonraki fazlarda "Hizmetler" ve "Referanslar" gelecek */}
-        <section className="py-20 bg-white text-center">
-            <h2 className="text-3xl font-heading text-sirver-secondary">FAZ 2: Hero Alanı Tamamlandı</h2>
-            <p className="mt-4 text-gray-600">Video placeholder'ı ve istatistik şeridi yerleşti.</p>
-        </section>
+        {/* 2. HİZMETLER: Bento Grid */}
+        <Services />
+        
+        {/* 3. BEYİN: Tasarruf Hesaplayıcı */}
+        <Calculator />
+
+        {/* 4. GÜVEN: Referanslar ve Miras */}
+        <References />
       </main>
     </>
   );

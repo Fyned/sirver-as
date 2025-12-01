@@ -1,6 +1,6 @@
 export default {
   plugins: {
-    '@tailwindcss/postcss': {}, // Değişen satır burası
+    tailwindcss: {},
     autoprefixer: {},
   },
 }

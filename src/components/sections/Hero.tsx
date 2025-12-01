@@ -37,24 +37,24 @@ export default function Hero() {
         
         {/* Animasyonlu Başlık */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block py-1 px-3 rounded-full bg-sirver-primary/20 border border-sirver-primary/50 text-sirver-primary text-xs font-bold tracking-widest uppercase mb-4 backdrop-blur-sm">
-            Sürdürülebilir Enerji Çözümleri
-          </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-tight">
-            DOĞADAN ENERJİYE <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sirver-primary to-green-400">
-              KESİNTİSİZ GÜÇ
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light">
-            İnşaat sektöründeki lojistik gücümüzü, biyokütle enerji tedariğine taşıyoruz. 
-            Sanayi tesisleri için yıllık 1.2 Milyon ton yüksek kalorili odun cipsi kapasitesi.
-          </p>
-        </motion.div>
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+>
+  <span className="inline-block py-1 px-3 rounded-full bg-sirver-primary/20 border border-sirver-primary/50 text-sirver-primary text-xs font-bold tracking-widest uppercase mb-4 backdrop-blur-sm">
+    Yüksek Kalorili Biyokütle Yakıtı
+  </span>
+  <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-tight">
+    <span className="block text-white">STANDARTLARI AŞAN</span>
+    <span className="text-transparent bg-clip-text bg-gradient-to-r from-sirver-primary to-green-400">
+      ODUN CİPSİ TEDARİĞİ
+    </span>
+  </h1>
+  <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light">
+    Enerji santralleri ve sanayi tesisleri için ISO 17225-4 standartlarında, 
+    düşük nem ve minimum kül oranına sahip <strong>G30/G50 Odun Cipsi</strong> üretiyoruz.
+  </p>
+</motion.div>
 
         {/* Aksiyon Butonları */}
         <motion.div 
