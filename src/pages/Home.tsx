@@ -1,7 +1,8 @@
 import Hero from '../components/sections/Hero';
 import Services from '../components/sections/Services';
 import Calculator from '../components/sections/Calculator';
-import References from '../components/sections/References'; // Yeni Import
+import References from '../components/sections/References';
+import CTA from '../components/sections/CTA'; // YENİ EKLENDİ
 import { Helmet } from 'react-helmet-async';
 
 export default function Home() {
@@ -24,6 +25,9 @@ export default function Home() {
 
         {/* 4. GÜVEN: Referanslar ve Miras */}
         <References />
+
+        {/* 5. AKSİYON: Teklif Al */}
+        <CTA />
       </main>
     </>
   );
