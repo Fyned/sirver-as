@@ -2,8 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Check, Zap, Leaf, BarChart3 } from 'lucide-react';
 import CTA from '../components/sections/CTA';
-
-// IMPORT
+// GÖRSEL IMPORT
 import imgWood from '../assets/images/services/wood-chips-closeup.jpg';
 
 export default function Products() {
@@ -85,7 +84,7 @@ export default function Products() {
         </section>
 
         {/* ... Teknik Tablo ve Diğer Kısımlar (Aynı Kalıyor) ... */}
-        {/* KODUN GERİSİ AYNEN KORUNUYOR, SADECE IMG GÜNCELLENDİ */}
+        {/* KODUN GERİSİ AYNEN KORUNUYOR */}
         <section className="bg-[#111827] text-white py-24 relative overflow-hidden">
            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sirver-primary/20 rounded-full blur-[120px] pointer-events-none" />
            <div className="container mx-auto px-4 relative z-10">
@@ -124,7 +123,6 @@ export default function Products() {
            </div>
         </section>
 
-        {/* KULLANIM ALANLARI */}
         <section className="container mx-auto px-4 py-24">
            <h2 className="text-3xl font-heading font-bold text-center mb-12 text-sirver-secondary">KULLANIM ALANLARI</h2>
            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

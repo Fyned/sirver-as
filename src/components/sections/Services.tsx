@@ -1,24 +1,35 @@
 import { motion } from 'framer-motion';
-import { Factory, Leaf, Truck, Flame } from 'lucide-react';
-// Placeholder kaldırıldı
-// GÖRSEL IMPORTLARI (Dosya yollarının doğru olduğundan emin olun)
-import imgChipsHover from '../../assets/images/home/g50-chips-hover.jpg';
-import imgStockyard from '../../assets/images/home/stockyard-dark.jpg';
+import { Factory, Truck, Flame, Wheat } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const ServiceCard = ({ title, desc, icon: Icon, delay, className, children }: any) => (
+// GÖRSELLER IMPORT
+import imgChipsHover from '../../assets/images/home/g50-chips-hover.jpg';
+// Yeni Mısır Sapı Görseli (Henüz yoksa placeholder kullanır)
+import imgCorn from '../../assets/images/home/corn-bale-tall.jpg'; 
+
+const ServiceCard = ({ title, desc, icon: Icon, link, className, children }: any) => (
   <motion.div 
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ delay, duration: 0.5 }}
-    className={`bg-white p-6 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow flex flex-col justify-between overflow-hidden relative group ${className}`}
+    transition={{ duration: 0.5 }}
+    className={`bg-white p-6 rounded-3xl border border-gray-100 shadow-lg hover:shadow-2xl transition-all group flex flex-col justify-between overflow-hidden relative ${className}`}
   >
-    <div className="z-10 relative">
-      <div className="w-12 h-12 rounded-lg bg-sirver-surface flex items-center justify-center mb-4 text-sirver-primary group-hover:bg-sirver-primary group-hover:text-white transition-colors">
-        <Icon size={24} />
+    <div className="z-10 relative h-full flex flex-col">
+      <div className="flex justify-between items-start mb-4">
+        <div className="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center text-sirver-secondary shadow-sm group-hover:scale-110 transition-transform duration-500">
+          <Icon size={24} />
+        </div>
+        {/* Link oku */}
+        <Link to={link} className="w-8 h-8 rounded-full bg-white/20 hover:bg-white flex items-center justify-center text-white hover:text-sirver-secondary transition-all">
+           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+        </Link>
       </div>
-      <h3 className="text-xl font-heading font-bold text-sirver-secondary mb-2">{title}</h3>
-      <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+      
+      <div className="mt-auto">
+        <h3 className="text-2xl font-heading font-bold text-white mb-2 drop-shadow-md">{title}</h3>
+        <p className="text-gray-100 text-sm font-medium leading-relaxed opacity-90 drop-shadow-sm">{desc}</p>
+      </div>
     </div>
     {children}
   </motion.div>
@@ -30,59 +41,70 @@ export default function Services() {
       <div className="container mx-auto px-4">
         
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-sirver-secondary mb-4">
-            SANAYİ TİPİ ENERJİ HAMMADDESİ
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-sirver-secondary mb-4">
+            FAALİYET ALANLARIMIZ
           </h2>
-          <p className="text-gray-600">
-            Odun cipsini sadece bir atık değil, kalorifik değeri yüksek mühendislik ürünü bir yakıt olarak işliyoruz.
+          <p className="text-gray-600 text-lg">
+            Türkiye'nin biyokütle potansiyelini enerjiye dönüştürüyoruz.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
+        {/* BENTO GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(320px,auto)]">
           
-          {/* KUTU 1: Premium Odun Cipsi (Geniş Kutu) */}
+          {/* 1. KUTU: ORMAN (Geniş - Sol) */}
           <ServiceCard 
-            title="Premium Odun Cipsi (G30 / G50)" 
-            desc="Kazan verimliliğini maksimize eden homojen partikül boyutu. <%20 nem oranı garantisi ile fosil yakıtlara göre %40'a varan maliyet avantajı sağlayan yüksek enerjili yakıt."
-            icon={Flame}
-            delay={0.1}
-            className="md:col-span-2 relative border-l-4 border-l-sirver-primary"
-          >
-            {/* Hover Görseli Entegrasyonu */}
-            <div className="absolute right-0 top-0 w-1/2 h-full opacity-10 group-hover:opacity-30 transition-all duration-500 hidden md:block bg-sirver-primary overflow-hidden">
-               <img src={imgChipsHover} alt="G50 Odun Cipsi Yakın Çekim" className="h-full w-full object-cover" />
-            </div>
-          </ServiceCard>
-
-          {/* KUTU 2: Endüstriyel Hammadde (Dikey Kutu) */}
-          <ServiceCard 
-            title="Endüstriyel Hammadde" 
-            desc="MDF, Sunta ve Kağıt endüstrisi için lif yapısı bozulmamış, kabuksuz ve temiz yonga tedariği. Standartlara uygun eleme teknolojisi."
+            title="Endüstriyel Odun Cipsi" 
+            desc="G30/G50 standartlarında, kabuksuz ve düşük nemli ormansal yakıt."
             icon={Factory}
-            delay={0.2}
-            className="md:row-span-2 bg-sirver-secondary text-white"
+            link="/hizmetler/odun-cipsi"
+            className="md:col-span-2 bg-sirver-primary"
           >
-             {/* Stok Sahası Görseli Entegrasyonu */}
-             <div className="mt-6 h-40 w-full rounded-lg overflow-hidden opacity-60 group-hover:opacity-80 transition-opacity">
-                <img src={imgStockyard} alt="Hammadde Stok Sahası" className="h-full w-full object-cover" />
-             </div>
+            {/* Arka Plan Görseli (Hover) */}
+            <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+               <img src={imgChipsHover} alt="Odun Cipsi" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
           </ServiceCard>
 
-          {/* KUTU 3: Sertifikalı Kaynak */}
+          {/* 2. KUTU: TARIM (Dikey - Sağ) */}
           <ServiceCard 
-            title="Sertifikalı Kaynak" 
-            desc="%100 Orman Genel Müdürlüğü endüstriyel plantasyon sahalarından yasal ve izlenebilir kesim."
-            icon={Leaf}
-            delay={0.3}
-          />
+            title="Mısır Sapı Balyası" 
+            desc="Enerji ve hayvancılık için yüksek lifli, ekonomik büyük kare balyalar."
+            icon={Wheat}
+            link="/hizmetler/misir-sapi"
+            className="md:row-span-2 bg-yellow-600"
+          >
+             <div className="absolute inset-0 opacity-40 group-hover:opacity-50 transition-opacity duration-700">
+                {/* BURAYA YENİ MISIR GÖRSELİ GELECEK */}
+                <img src={imgCorn} alt="Mısır Sapı Balyası" className="w-full h-full object-cover" />
+             </div>
+             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+          </ServiceCard>
 
-          {/* KUTU 4: Lojistik */}
+          {/* 3. KUTU: BİYOKÜTLE (Kare - Sol Alt) */}
           <ServiceCard 
-            title="Fabrika Teslim Lojistik" 
-            desc="Kendi tır filomuz ile tam zamanında (JIT) teslimat güvencesi."
+            title="Biyokütle Yakıtı" 
+            desc="Sanayi kazanları için özel karışımlı, yüksek kalorili reçete."
+            icon={Flame}
+            link="/hizmetler/biyokutle-yakiti"
+            className="bg-orange-600"
+          >
+             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+          </ServiceCard>
+
+          {/* 4. KUTU: LOJİSTİK (Kare - Orta Alt) */}
+          <ServiceCard 
+            title="Güçlü Lojistik" 
+            desc="Walking Floor tır filosu ile Türkiye geneli JIT teslimat."
             icon={Truck}
-            delay={0.4}
-          />
+            link="/hizmetler/lojistik"
+            className="bg-blue-900"
+          >
+             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-20"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+          </ServiceCard>
 
         </div>
       </div>

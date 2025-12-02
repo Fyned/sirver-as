@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Mail, Phone, MapPin, ExternalLink, Send } from 'lucide-react';
+// GÖRSEL IMPORT
 import mapBg from '../assets/images/contact/map-bg.jpg';
 
 export default function Contact() {
@@ -59,7 +60,7 @@ export default function Contact() {
                       Musalla Bağları, Gürsesler Sk.<br/>
                       42060 Selçuklu, Konya
                     </p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Esmira+Office+Center+Konya" target="_blank" rel="noreferrer" className="text-sirver-primary text-xs font-bold mt-3 inline-flex items-center gap-1 hover:underline bg-green-50 px-2 py-1 rounded">
+                    <a href="https://maps.google.com/?q=37.8941930366937,32.50155072776283" target="_blank" rel="noreferrer" className="text-sirver-primary text-xs font-bold mt-3 inline-flex items-center gap-1 hover:underline bg-green-50 px-2 py-1 rounded">
                       Yol Tarifi Al <ExternalLink size={12}/>
                     </a>
                   </div>
@@ -137,18 +138,18 @@ export default function Contact() {
 
           </div>
 
-          {/* EN ALT: Harita (Esmira Office Center Pinli) */}
+          {/* EN ALT: Harita (Esmira Office Center) */}
           <div className="w-full h-[450px] bg-white p-2 rounded-3xl shadow-2xl overflow-hidden relative group">
              <div className="absolute inset-0 bg-sirver-secondary/10 pointer-events-none z-10 group-hover:bg-transparent transition-colors duration-500"></div>
              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.470764959148!2d32.49513637655344!3d37.8730699719604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d08563d06d6f3b%3A0x2049726800142939!2sEsmira%20Office%20Center!5e0!3m2!1str!2str!4v1715167200000!5m2!1str!2str"
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3149.4877500500006!2d32.50155072776283!3d37.8941930366937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzfCsDUzJzM5LjEiTiAzMsKwMzAnMDUuNiJF!5e0!3m2!1str!2str!4v1701440000000!5m2!1str!2str"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, borderRadius: '1.5rem' }} 
                 allowFullScreen={true} 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Sirver Ofis Konumu - Esmira Office Center"
+                title="Esmira Office Center Konumu"
                 className="grayscale hover:grayscale-0 transition-all duration-1000 scale-100 hover:scale-105"
               ></iframe>
           </div>

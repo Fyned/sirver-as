@@ -1,58 +1,75 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom'; // Link import edildi
-import { Factory, Truck, Leaf, Flame, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Factory, Truck, Leaf, Flame, ArrowRight, CheckCircle2, Wheat, Trees } from 'lucide-react';
 import Placeholder from '../components/ui/Placeholder';
 import CTA from '../components/sections/CTA';
 
-const services = [
+// MEVCUT GÖRSELLER
+import imgWood from '../assets/images/services/wood-chips-closeup.jpg';
+import imgBiomass from '../assets/images/services/biomass-energy.jpg';
+import imgForest from '../assets/images/services/forest-residue.jpg';
+import imgLogistics from '../assets/images/services/logistics-fleet.jpg';
+
+// ORMANSAL HİZMETLER
+const forestryServices = [
   {
     id: "odun-cipsi",
     title: "Endüstriyel Odun Cipsi",
     icon: Factory,
+    image: imgWood,
     desc: "Yonga levha (MDF) ve kağıt endüstrisi için yüksek standartlarda hammadde tedariği.",
-    details: [
-      "Standart Boyutlandırma: İstenilen ebatlarda (G30, G50) homojen kırım.",
-      "Kabuksuz Üretim: Lif kalitesini artıran temiz hammadde.",
-      "Yüksek Kapasite: Günlük 1000+ ton üretim ve sevkiyat gücü.",
-      "Analiz Garantisi: Her parti için nem ve boyut dağılım raporu."
-    ]
-  },
-  {
-    id: "biyokutle",
-    title: "Biyokütle Yakıtı",
-    icon: Flame,
-    desc: "Enerji santralleri ve sanayi kazanları için yüksek kalorili, ekonomik yakıt çözümü.",
-    details: [
-      "Yüksek Kalori: 3500-4200 kcal/kg arası net enerji değeri.",
-      "Düşük Nem: Doğal veya fırın kurutma ile %20-30 nem seviyesi.",
-      "Düşük Kül Oranı: Kazan verimliliğini koruyan temiz yanma.",
-      "Karbon Nötr: Fosil yakıtlara göre çevre dostu alternatif."
-    ]
+    details: ["G30/G50 Standart Boyut", "Kabuksuz Temiz Yonga", "Günlük 1000+ Ton Kapasite"]
   },
   {
     id: "orman-atiklari",
     title: "Orman Endüstri Atıkları",
+    icon: Trees,
+    image: imgForest,
+    desc: "Orman sahalarındaki üretim artıklarının ve dalların ekonomiye kazandırılması.",
+    details: ["Saha Temizliği & İyileştirme", "Yerinde Mobil Kırım", "FSC Sertifikalı Kaynak"]
+  }
+];
+
+// TARIMSAL HİZMETLER (YENİ)
+const agriculturalServices = [
+  {
+    id: "misir-sapi",
+    title: "Mısır Sapı Balyası",
+    icon: Wheat,
+    // Şimdilik Placeholder, Faz 3'te görsel gelecek
+    image: null, 
+    desc: "Biyokütle enerji santralleri ve hayvancılık için yüksek lifli, ekonomik mısır sapı balyaları.",
+    details: ["Düşük Nem Oranı", "Yüksek Sıkıştırma (Büyük Balya)", "Enerji ve Yem Amaçlı Kullanım"]
+  },
+  {
+    id: "tarimsal-biyokutle",
+    title: "Tarımsal Biyokütle",
     icon: Leaf,
-    desc: "Orman sahalarındaki üretim artıklarının ekonomiye kazandırılması.",
-    details: [
-      "Saha Temizliği: Orman yangın riskini azaltan atık toplama operasyonu.",
-      "Geri Dönüşüm: Dal, kök ve kabukların enerjiye dönüşümü.",
-      "Sürdürülebilir Kaynak: OGM izinli sahalardan yasal tedarik.",
-      "Çevresel Etki: Karbon döngüsüne pozitif katkı."
-    ]
+    // Şimdilik Placeholder, Faz 3'te görsel gelecek
+    image: null, 
+    desc: "Ayçiçeği sapı, kanola ve diğer tarla atıklarının enerjiye dönüşümü.",
+    details: ["Sezonluk Düzenli Tedarik", "Yüksek Kalorifik Değer", "Çevre Dostu Geri Dönüşüm"]
+  }
+];
+
+// ORTAK HİZMETLER
+const commonServices = [
+  {
+    id: "biyokutle-yakiti",
+    title: "Biyokütle Enerji Yakıtı",
+    icon: Flame,
+    image: imgBiomass,
+    desc: "Hem ormansal hem tarımsal kaynaklı, sanayi kazanlarına uygun karma veya saf yakıt.",
+    details: ["%20-30 Nem Garantisi", "Kazan Verimliliği Odaklı", "Düşük Emisyon"]
   },
   {
     id: "lojistik",
     title: "Lojistik Çözümleri",
     icon: Truck,
-    desc: "Hammaddeyi kaynağından fabrikanıza tam zamanında (JIT) ulaştıran güçlü filo.",
-    details: [
-      "Hareketli Taban (Walking Floor): Hızlı boşaltım sağlayan özel tırlar.",
-      "Geniş Filo: Türkiye'nin her noktasına sevkiyat imkanı.",
-      "Stok Yönetimi: Fabrikanızın sahasında stok takibi ve yönetimi.",
-      "7/24 Operasyon: Üretiminizin durmaması için kesintisiz akış."
-    ]
+    image: imgLogistics,
+    desc: "Tüm ürün gruplarında tarladan/ormandan fabrikanıza JIT (Tam Zamanında) teslimat.",
+    details: ["Walking Floor Tırlar", "Geniş Araç Filosu", "7/24 Sevkiyat"]
   }
 ];
 
@@ -60,8 +77,8 @@ export default function ServicesPage() {
   return (
     <>
       <Helmet>
-        <title>Hizmetlerimiz | Sirver A.Ş.</title>
-        <meta name="description" content="Endüstriyel odun cipsi, biyokütle yakıtı, orman atıkları geri dönüşümü ve lojistik çözümleri." />
+        <title>Faaliyet Alanları | Sirver A.Ş.</title>
+        <meta name="description" content="Ormansal atık yönetimi, odun cipsi ve tarımsal biyokütle (mısır sapı) balyalama hizmetlerimiz." />
       </Helmet>
 
       <main className="pt-32 pb-0 bg-gray-50">
@@ -71,72 +88,113 @@ export default function ServicesPage() {
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
-             className="max-w-3xl mx-auto"
+             className="max-w-4xl mx-auto"
            >
-             <span className="text-sirver-accent font-bold tracking-widest text-sm uppercase mb-4 block">Çözüm Alanlarımız</span>
+             <span className="text-sirver-accent font-bold tracking-widest text-sm uppercase mb-4 block">Entegre Atık Yönetimi</span>
              <h1 className="text-4xl md:text-6xl font-heading font-bold text-sirver-secondary mb-6">
-               ENDÜSTRİYEL <br/> <span className="text-sirver-primary">ÇÖZÜM ORTAĞINIZ</span>
+               DOĞANIN İKİ YÜZÜ: <br/> 
+               <span className="text-sirver-primary">ORMAN</span> VE <span className="text-yellow-600">TARIM</span>
              </h1>
              <p className="text-xl text-gray-600">
-               Hammadde tedariğinden enerji üretimine kadar uzanan entegre hizmet yelpazemiz.
+               Türkiye'nin biyokütle potansiyelini tam kapasiteyle kullanıyoruz. Hem orman hem de tarla atıklarını enerjiye dönüştürüyoruz.
              </p>
            </motion.div>
         </section>
 
-        {/* HİZMETLER LİSTESİ */}
-        <section className="container mx-auto px-4 mb-24 space-y-24">
-          {services.map((service, index) => (
-            <motion.div 
-              key={service.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}
-            >
-              {/* Görsel */}
-              <div className="w-full lg:w-1/2 h-[400px] relative group">
-                <div className={`absolute inset-0 bg-gradient-to-br ${index % 2 === 1 ? 'from-sirver-accent/20' : 'from-sirver-primary/20'} to-transparent rounded-3xl transform rotate-3 group-hover:rotate-0 transition-all duration-500`}></div>
-                <div className="absolute inset-0 bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                   <Placeholder label={`${service.title} GÖRSELİ`} className="h-full w-full border-none bg-gray-100" />
-                </div>
-              </div>
+        {/* 1. BÖLÜM: ORMANSAL ATIKLAR */}
+        <section className="container mx-auto px-4 mb-24">
+          <div className="flex items-center gap-4 mb-12 border-b border-gray-200 pb-4">
+            <Trees className="text-sirver-primary" size={40} />
+            <h2 className="text-3xl font-heading font-bold text-sirver-secondary">Ormansal Faaliyetler</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {forestryServices.map((service) => (
+              <ServiceItem key={service.id} service={service} color="green" />
+            ))}
+          </div>
+        </section>
 
-              {/* İçerik */}
-              <div className="w-full lg:w-1/2">
-                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${index % 2 === 1 ? 'bg-orange-100 text-sirver-accent' : 'bg-green-100 text-sirver-primary'}`}>
-                  <service.icon size={32} />
-                </div>
-                <h2 className="text-3xl font-heading font-bold text-sirver-secondary mb-4">
-                  {service.title}
-                </h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  {service.desc}
-                </p>
-                
-                <ul className="space-y-4 mb-8">
-                  {service.details.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-gray-700">
-                      <CheckCircle2 size={20} className={`shrink-0 mt-1 ${index % 2 === 1 ? 'text-sirver-accent' : 'text-sirver-primary'}`} />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+        {/* 2. BÖLÜM: TARIMSAL ATIKLAR (YENİ) */}
+        <section className="container mx-auto px-4 mb-24">
+          <div className="flex items-center gap-4 mb-12 border-b border-gray-200 pb-4">
+            <Wheat className="text-yellow-600" size={40} />
+            <h2 className="text-3xl font-heading font-bold text-sirver-secondary">Tarımsal Faaliyetler</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {agriculturalServices.map((service) => (
+              <ServiceItem key={service.id} service={service} color="yellow" />
+            ))}
+          </div>
+        </section>
 
-                {/* GÜNCELLENEN BUTON: Artık İletişim Sayfasına Gidiyor */}
-                <Link 
-  to={`/hizmetler/${service.id}`} 
-  className={`flex items-center gap-2 font-bold transition-all ${index % 2 === 1 ? 'text-sirver-accent hover:gap-4' : 'text-sirver-primary hover:gap-4'}`}
->
-  Detaylı Bilgi Al <ArrowRight size={20} />
-</Link>
-              </div>
-            </motion.div>
-          ))}
+        {/* 3. BÖLÜM: ORTAK & ENERJİ */}
+        <section className="bg-[#111827] py-20 mb-0">
+          <div className="container mx-auto px-4">
+             <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-4">
+                <Flame className="text-sirver-accent" size={40} />
+                <h2 className="text-3xl font-heading font-bold text-white">Enerji & Lojistik</h2>
+             </div>
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {commonServices.map((service) => (
+                  <ServiceItem key={service.id} service={service} color="dark" />
+                ))}
+             </div>
+          </div>
         </section>
 
         <CTA />
       </main>
     </>
   );
+}
+
+// YARDIMCI BİLEŞEN (KOD TEKRARINI ÖNLEMEK İÇİN)
+function ServiceItem({ service, color }: any) {
+  const isDark = color === 'dark';
+  const accentColor = color === 'yellow' ? 'text-yellow-600' : (color === 'green' ? 'text-sirver-primary' : 'text-sirver-accent');
+  const bgColor = color === 'yellow' ? 'bg-yellow-50' : (color === 'green' ? 'bg-green-50' : 'bg-white/10');
+  const textColor = isDark ? 'text-white' : 'text-sirver-secondary';
+  const descColor = isDark ? 'text-gray-400' : 'text-gray-600';
+
+  return (
+    <motion.div 
+      whileHover={{ y: -5 }}
+      className={`${isDark ? 'bg-white/5 border-white/10' : 'bg-white border-gray-100'} p-8 rounded-3xl border shadow-lg flex flex-col md:flex-row gap-8 items-center`}
+    >
+      {/* Görsel */}
+      <div className="w-full md:w-1/2 h-48 md:h-full min-h-[200px] rounded-2xl overflow-hidden relative">
+         {service.image ? (
+            <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+         ) : (
+            <Placeholder label={`${service.title} Görseli`} className="w-full h-full bg-gray-200 border-none" />
+         )}
+      </div>
+
+      {/* İçerik */}
+      <div className="w-full md:w-1/2">
+         <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${bgColor} ${accentColor}`}>
+            <service.icon size={24} />
+         </div>
+         <h3 className={`text-2xl font-bold mb-3 ${textColor}`}>{service.title}</h3>
+         <p className={`text-sm mb-6 leading-relaxed ${descColor}`}>{service.desc}</p>
+         
+         <ul className="space-y-2 mb-6">
+            {service.details.map((detail: string, i: number) => (
+              <li key={i} className={`flex items-center gap-2 text-xs font-bold ${isDark ? 'text-gray-300' : 'text-gray-500'}`}>
+                <CheckCircle2 size={14} className={accentColor} /> {detail}
+              </li>
+            ))}
+         </ul>
+
+         <Link 
+            to={`/hizmetler/${service.id}`} 
+            className={`inline-flex items-center gap-2 font-bold text-sm transition-all ${accentColor} hover:gap-3`}
+         >
+            İncele <ArrowRight size={16} />
+         </Link>
+      </div>
+    </motion.div>
+  )
 }

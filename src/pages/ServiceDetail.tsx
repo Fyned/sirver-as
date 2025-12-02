@@ -4,18 +4,22 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowLeft, FileText, BarChart, Settings, HelpCircle } from 'lucide-react';
 import CTA from '../components/sections/CTA';
 
-// GÖRSELLER
+// GÖRSELLER IMPORT (Faz 3'te yenileri eklenecek)
 import imgWood from '../assets/images/services/wood-chips-closeup.jpg';
 import imgBiomass from '../assets/images/services/biomass-energy.jpg';
 import imgForest from '../assets/images/services/forest-residue.jpg';
 import imgLogistics from '../assets/images/services/logistics-fleet.jpg';
 
 // GÖRSEL HARİTASI
+// Not: Yeni tarımsal ürünler için şimdilik biyokütle görselini kullanıyoruz.
+// Faz 3'te buraya özel görseller gelecek.
 const serviceImages: any = {
   "odun-cipsi": imgWood,
-  "biyokutle": imgBiomass,
+  "biyokutle-yakiti": imgBiomass, // Key güncellendi
   "orman-atiklari": imgForest,
-  "lojistik": imgLogistics
+  "lojistik": imgLogistics,
+  "misir-sapi": imgBiomass,      // Geçici görsel (Faz 3'te değişecek)
+  "tarimsal-biyokutle": imgForest // Geçici görsel (Faz 3'te değişecek)
 };
 
 // DETAYLI İÇERİK VERİTABANI
@@ -43,8 +47,8 @@ const serviceData: any = {
       { title: "Eleme & Tasnif", text: "Toz ve irilerin ayrılması, standart boyutun garantisi." }
     ]
   },
-  "biyokutle": {
-    title: "Biyokütle Yakıtı",
+  "biyokutle-yakiti": { // Key güncellendi
+    title: "Biyokütle Enerji Yakıtı",
     desc: "Enerji santralleri (BES) ve sanayi kazanları için fosil yakıtlara alternatif, yüksek kalorili ve karbon nötr enerji kaynağı.",
     specs: [
       { label: "Kalorifik Değer", value: "3.5 - 4.2 kWh/kg" },
@@ -109,6 +113,53 @@ const serviceData: any = {
       { title: "Canlı Takip", text: "Aracın konumunun anlık paylaşımı." },
       { title: "Teslimat", text: "Fabrika sahasına otomatik boşaltım." }
     ]
+  },
+  // YENİ TARIMSAL ÜRÜNLER
+  "misir-sapi": {
+    title: "Mısır Sapı Balyası",
+    desc: "Biyokütle enerji santralleri ve hayvancılık sektörü için yüksek lifli, düşük nem oranına sahip, yüksek sıkıştırmalı kare balyalar.",
+    specs: [
+      { label: "Balya Tipi", value: "Büyük Kare (Big Bale)" },
+      { label: "Nem Oranı", value: "< %15 - %20" },
+      { label: "Kalorifik Değer", value: "~3500 - 3800 kcal/kg" },
+      { label: "Ağırlık", value: "350 - 450 kg / Adet" },
+      { label: "Kül Oranı", value: "< %5.0" }
+    ],
+    features: [
+      "Yüksek Sıkıştırma: Nakliye maliyetlerini düşüren yoğun balyalama.",
+      "Düşük Nem: Hasat sonrası tarlada doğal kurutma (sun-drying) işlemi.",
+      "Çok Amaçlı: Hem yakıt (biyokütle) hem de hayvan yemi/altlığı olarak kullanım.",
+      "Büyük Stok: Sezonluk üretimle yıl boyu tedarik garantisi."
+    ],
+    process: [
+      { title: "Hasat Sonrası", text: "Dane mısır hasadından sonra sapların tarlada namlu yapılması." },
+      { title: "Doğal Kurutma", text: "Sapların güneş altında ideal nem oranına düşmesi." },
+      { title: "Balyalama", text: "Yüksek kapasiteli makinelerle sıkı kare balya yapımı." },
+      { title: "Stok & Sevk", text: "Yağmurdan korunaklı sahalarda stoklama ve nakliye." }
+    ]
+  },
+  "tarimsal-biyokutle": {
+    title: "Tarımsal Biyokütle",
+    desc: "Ayçiçeği sapı, kanola, pamuk sapı ve çeltik kavuzu gibi tarla atıklarının toplanarak temiz enerji kaynağına dönüştürülmesi.",
+    specs: [
+      { label: "Kaynaklar", value: "Ayçiçeği, Pamuk, Kanola" },
+      { label: "Form", value: "Dökme veya Balya" },
+      { label: "Kalori", value: "3200 - 3800 kcal/kg" },
+      { label: "Nem", value: "< %25" },
+      { label: "Sürdürülebilirlik", value: "%100 Geri Dönüşüm" }
+    ],
+    features: [
+      "Atık Yönetimi: Tarlada kalan ve çürümeye terk edilen atıkların değerlendirilmesi.",
+      "Ekonomik Yakıt: Odun cipsine göre daha düşük maliyetli alternatif.",
+      "Karbon Nötr: Bitkisel kökenli olduğu için karbon döngüsünü destekler.",
+      "Esnek Kullanım: Farklı kazan tiplerine uygun hammadde karışımları."
+    ],
+    process: [
+      { title: "Saha Analizi", text: "Bölgesel tarım ürünlerine göre atık potansiyelinin belirlenmesi." },
+      { title: "Toplama", text: "Biçerdöver sonrası kalan sapların toplanması." },
+      { title: "İşleme", text: "Gerekirse kırma veya balyalama işlemi." },
+      { title: "Tedarik", text: "Enerji tesislerine doğrudan hammadde akışı." }
+    ]
   }
 };
 
@@ -130,7 +181,7 @@ export default function ServiceDetail() {
         
         <div className="container mx-auto px-4 py-8">
            <Link to="/hizmetler" className="inline-flex items-center gap-2 text-gray-500 hover:text-sirver-primary transition-colors mb-6 font-bold text-sm">
-              <ArrowLeft size={18} /> Tüm Hizmetlere Dön
+              <ArrowLeft size={18} /> Tüm Faaliyet Alanlarına Dön
            </Link>
            <motion.h1 
              initial={{ opacity: 0, x: -20 }}
@@ -220,7 +271,7 @@ export default function ServiceDetail() {
                           <ArrowLeft size={16} className="rotate-[-135deg]" />
                        </button>
                        <button className="w-full flex items-center justify-between bg-white/10 hover:bg-white/20 p-4 rounded-lg transition-colors text-sm">
-                          <span>FSC Sertifikası (.pdf)</span>
+                          <span>FSC / Sertifika (.pdf)</span>
                           <ArrowLeft size={16} className="rotate-[-135deg]" />
                        </button>
                     </div>
@@ -230,9 +281,9 @@ export default function ServiceDetail() {
                     <div className="flex items-start gap-3">
                        <HelpCircle className="text-blue-600 shrink-0 mt-1" />
                        <div>
-                          <h4 className="font-bold text-blue-900 text-sm mb-1">Özel Üretim Yapıyor Musunuz?</h4>
+                          <h4 className="font-bold text-blue-900 text-sm mb-1">Stok Durumu Nedir?</h4>
                           <p className="text-blue-700 text-xs leading-relaxed">
-                             Evet, tesislerimizde kazan tipinize uygun nem ve boyut aralığında (G30-G100) özel üretim yapabilmekteyiz.
+                             Tarımsal ürünlerde sezonluk stoklarımız, ormansal ürünlerde ise yıl boyu devam eden üretimimiz mevcuttur. Güncel tonaj için arayınız.
                           </p>
                        </div>
                     </div>

@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Leaf, RefreshCcw, Globe, Trees } from 'lucide-react';
 import CTA from '../components/sections/CTA';
+// GÖRSEL IMPORT
 import imgNature from '../assets/images/sustainability/forest-nature.jpg';
 
 export default function Sustainability() {
@@ -73,6 +74,7 @@ export default function Sustainability() {
               </div>
               
               <div className="h-[500px] rounded-3xl overflow-hidden relative shadow-xl">
+                 {/* GÖRSEL */}
                  <img src={imgNature} alt="Sürdürülebilir Orman" className="h-full w-full object-cover" />
                  <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-lg">
                     <div className="flex items-center gap-4">

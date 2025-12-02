@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom'; // useLocation eklendi
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, ChevronRight } from 'lucide-react';
 import logoFull from '../../assets/icons/logo-full.svg';
 
@@ -9,31 +9,27 @@ export default function Header() {
   const location = useLocation();
   const isHome = location.pathname === '/';
 
-  // Scroll takibi
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Header Sınıflarını Belirle
-  // Eğer Anasayfa ise: Scroll edilinceye kadar şeffaf.
-  // Diğer sayfalar ise: Her zaman dolu (glass) ve gölgeli.
   const headerClass = isHome && !scrolled
     ? 'bg-transparent border-transparent py-5'
-    : 'glass py-3 border-gray-200/50 shadow-glass bg-[#ECEFF1]/90'; // Gümüş zemin
+    : 'glass py-3 border-gray-200/50 shadow-glass bg-[#ECEFF1]/90';
 
   const textColor = isHome && !scrolled
     ? 'text-white/90 hover:text-white'
     : 'text-sirver-secondary hover:text-sirver-primary';
 
   const logoFilter = isHome && !scrolled
-    ? 'brightness-0 invert' // Beyaz Logo
-    : 'filter-none'; // Renkli Logo
+    ? 'brightness-0 invert' 
+    : 'filter-none';
 
   const navLinks = [
     { name: 'Kurumsal', path: '/kurumsal' },
-    { name: 'Hizmetlerimiz', path: '/hizmetler' }, // BURASI DEĞİŞTİ
+    { name: 'Faaliyet Alanları', path: '/hizmetler' }, // İsim Değişti
     { name: 'Ürünler', path: '/urunler' },
     { name: 'Sürdürülebilirlik', path: '/surdurulebilirlik' },
     { name: 'İletişim', path: '/iletisim' },
@@ -42,7 +38,6 @@ export default function Header() {
   return (
     <div className="fixed w-full z-50 font-sans transition-all duration-300">
       
-      {/* TOP BAR: Sadece Anasayfada ve en tepedeyken görünsün, diğer sayfalarda kalabalık etmesin */}
       <div className={`bg-sirver-secondary text-white transition-all duration-500 overflow-hidden ${scrolled || !isHome ? 'h-0' : 'h-10'} flex items-center`}>
         <div className="container mx-auto px-4 flex justify-between text-xs font-medium tracking-wider text-gray-300">
           <div className="flex gap-6">
@@ -61,11 +56,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ANA MENÜ */}
       <header className={`transition-all duration-500 border-b ${headerClass}`}>
         <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
           
-          {/* LOGO */}
           <Link to="/" className="relative z-50">
              <img 
                src={logoFull} 
@@ -74,7 +67,6 @@ export default function Header() {
              />
           </Link>
 
-          {/* MASAÜSTÜ MENÜ */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link 
@@ -99,18 +91,16 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* MOBİL MENÜ BUTONU */}
           <button 
             onClick={() => setIsOpen(!isOpen)} 
             className={`md:hidden relative z-50 p-2 rounded ${
               isHome && !scrolled ? 'text-white' : 'text-sirver-secondary'
             }`}
           >
-            {isOpen ? <X size={30} className="text-sirver-secondary" /> : <Menu size={30} />}
+            {isOpen ? <X size={30} className={isHome && !scrolled ? "text-white" : "text-sirver-secondary"} /> : <Menu size={30} />}
           </button>
         </div>
 
-        {/* MOBİL MENÜ (Full Screen Overlay) */}
         <div className={`fixed inset-0 bg-[#ECEFF1] z-40 flex flex-col justify-center items-center gap-8 transition-all duration-500 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
           {navLinks.map((link) => (
             <Link 

@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Target, TrendingUp, Users, Award } from 'lucide-react';
 import CTA from '../components/sections/CTA';
+// GÖRSEL IMPORT
 import imgHQ from '../assets/images/about/hq-facility.jpg';
 
 export default function About() {
@@ -82,6 +83,7 @@ export default function About() {
             <div className="order-1 lg:order-2 relative h-[500px] group">
               <div className="absolute inset-0 bg-gradient-to-br from-sirver-primary to-sirver-secondary rounded-3xl transform rotate-3 opacity-20 transition-transform group-hover:rotate-0"></div>
               <div className="absolute inset-0 bg-white rounded-3xl shadow-2xl overflow-hidden">
+                 {/* GÖRSEL */}
                  <img src={imgHQ} alt="Genel Müdürlük ve Tesis" className="h-full w-full object-cover" />
               </div>
             </div>
