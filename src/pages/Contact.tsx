@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet-async';
 import { Mail, Phone, MapPin, ExternalLink, Send } from 'lucide-react';
-// HARİTA GÖRSELİNİ IMPORT EDİYORUZ
 import mapBg from '../assets/images/contact/map-bg.jpg';
 
 export default function Contact() {
@@ -13,21 +12,19 @@ export default function Contact() {
 
       <main className="pt-32 pb-24 bg-gray-50 min-h-screen relative">
         
-        {/* ARKA PLAN GÖRSELİ (HEADER ALTI) */}
+        {/* ARKA PLAN GÖRSELİ */}
         <div className="absolute top-0 left-0 w-full h-[600px] bg-sirver-secondary z-0 overflow-hidden">
-           {/* Harita Görseli */}
            <img 
              src={mapBg} 
              alt="Global Lojistik Haritası" 
              className="w-full h-full object-cover opacity-20" 
            />
-           {/* Alt kısma doğru yumuşak geçiş (Fade Out) */}
            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           
-          {/* BAŞLIK ALANI (Beyaz metin çünkü arka plan koyu) */}
+          {/* BAŞLIK ALANI */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-sirver-primary font-bold tracking-widest text-xs uppercase mb-2 block bg-white/10 backdrop-blur-sm py-1 px-3 rounded-full w-fit mx-auto border border-white/10">
               7/24 Ulaşılabilir
@@ -62,7 +59,7 @@ export default function Contact() {
                       Musalla Bağları, Gürsesler Sk.<br/>
                       42060 Selçuklu, Konya
                     </p>
-                    <a href="https://maps.google.com/?q=Esmira+Office+Center" target="_blank" rel="noreferrer" className="text-sirver-primary text-xs font-bold mt-3 inline-flex items-center gap-1 hover:underline bg-green-50 px-2 py-1 rounded">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Esmira+Office+Center+Konya" target="_blank" rel="noreferrer" className="text-sirver-primary text-xs font-bold mt-3 inline-flex items-center gap-1 hover:underline bg-green-50 px-2 py-1 rounded">
                       Yol Tarifi Al <ExternalLink size={12}/>
                     </a>
                   </div>
@@ -100,7 +97,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* SAĞ: İletişim Formu (YENİ EKLENDİ - Daha Dolu Görünsün Diye) */}
+            {/* SAĞ: İletişim Formu */}
             <div className="lg:col-span-2 bg-white p-8 rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100">
               <h3 className="text-2xl font-bold text-sirver-secondary mb-6 flex items-center gap-2">
                 <Send className="text-sirver-accent" /> Bize Yazın
@@ -140,18 +137,18 @@ export default function Contact() {
 
           </div>
 
-          {/* EN ALT: Harita (Tam Genişlik) */}
+          {/* EN ALT: Harita (Esmira Office Center Pinli) */}
           <div className="w-full h-[450px] bg-white p-2 rounded-3xl shadow-2xl overflow-hidden relative group">
              <div className="absolute inset-0 bg-sirver-secondary/10 pointer-events-none z-10 group-hover:bg-transparent transition-colors duration-500"></div>
              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.368464827863!2d32.4927!3d37.8783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d085fa12345678%3A0x123456789abcdef!2sEsmira%20Office%20Center!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.470764959148!2d32.49513637655344!3d37.8730699719604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d08563d06d6f3b%3A0x2049726800142939!2sEsmira%20Office%20Center!5e0!3m2!1str!2str!4v1715167200000!5m2!1str!2str"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, borderRadius: '1.5rem' }} 
                 allowFullScreen={true} 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Sirver Ofis Konumu"
+                title="Sirver Ofis Konumu - Esmira Office Center"
                 className="grayscale hover:grayscale-0 transition-all duration-1000 scale-100 hover:scale-105"
               ></iframe>
           </div>

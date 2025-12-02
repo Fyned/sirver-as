@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import { Factory, Leaf, Truck, Flame } from 'lucide-react';
-import Placeholder from '../ui/Placeholder';
+// Placeholder kaldırıldı
+// GÖRSEL IMPORTLARI (Dosya yollarının doğru olduğundan emin olun)
+import imgChipsHover from '../../assets/images/home/g50-chips-hover.jpg';
+import imgStockyard from '../../assets/images/home/stockyard-dark.jpg';
 
 const ServiceCard = ({ title, desc, icon: Icon, delay, className, children }: any) => (
   <motion.div 
@@ -37,6 +40,7 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
           
+          {/* KUTU 1: Premium Odun Cipsi (Geniş Kutu) */}
           <ServiceCard 
             title="Premium Odun Cipsi (G30 / G50)" 
             desc="Kazan verimliliğini maksimize eden homojen partikül boyutu. <%20 nem oranı garantisi ile fosil yakıtlara göre %40'a varan maliyet avantajı sağlayan yüksek enerjili yakıt."
@@ -44,11 +48,13 @@ export default function Services() {
             delay={0.1}
             className="md:col-span-2 relative border-l-4 border-l-sirver-primary"
           >
-            <div className="absolute right-0 top-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity hidden md:block bg-sirver-primary">
-               <Placeholder label="YAKIN ÇEKİM CİPS (G50)" height="h-full" className="border-none bg-transparent" />
+            {/* Hover Görseli Entegrasyonu */}
+            <div className="absolute right-0 top-0 w-1/2 h-full opacity-10 group-hover:opacity-30 transition-all duration-500 hidden md:block bg-sirver-primary overflow-hidden">
+               <img src={imgChipsHover} alt="G50 Odun Cipsi Yakın Çekim" className="h-full w-full object-cover" />
             </div>
           </ServiceCard>
 
+          {/* KUTU 2: Endüstriyel Hammadde (Dikey Kutu) */}
           <ServiceCard 
             title="Endüstriyel Hammadde" 
             desc="MDF, Sunta ve Kağıt endüstrisi için lif yapısı bozulmamış, kabuksuz ve temiz yonga tedariği. Standartlara uygun eleme teknolojisi."
@@ -56,11 +62,13 @@ export default function Services() {
             delay={0.2}
             className="md:row-span-2 bg-sirver-secondary text-white"
           >
-             <div className="mt-6 h-40 w-full rounded-lg overflow-hidden opacity-50">
-                <Placeholder label="HAMMADDE STOK SAHASI" height="h-full" className="bg-white/10 text-white border-white/20" />
+             {/* Stok Sahası Görseli Entegrasyonu */}
+             <div className="mt-6 h-40 w-full rounded-lg overflow-hidden opacity-60 group-hover:opacity-80 transition-opacity">
+                <img src={imgStockyard} alt="Hammadde Stok Sahası" className="h-full w-full object-cover" />
              </div>
           </ServiceCard>
 
+          {/* KUTU 3: Sertifikalı Kaynak */}
           <ServiceCard 
             title="Sertifikalı Kaynak" 
             desc="%100 Orman Genel Müdürlüğü endüstriyel plantasyon sahalarından yasal ve izlenebilir kesim."
@@ -68,6 +76,7 @@ export default function Services() {
             delay={0.3}
           />
 
+          {/* KUTU 4: Lojistik */}
           <ServiceCard 
             title="Fabrika Teslim Lojistik" 
             desc="Kendi tır filomuz ile tam zamanında (JIT) teslimat güvencesi."
