@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
-import { Factory, Leaf, Truck, Flame, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Factory, Leaf, Truck, Flame } from 'lucide-react';
 import Placeholder from '../ui/Placeholder';
-// CTA importu kaldırıldı çünkü bu bileşen CTA içermemeli, sayfa yapısında CTA ayrıca ekleniyor.
 
 const ServiceCard = ({ title, desc, icon: Icon, delay, className, children }: any) => (
   <motion.div 
@@ -24,9 +22,6 @@ const ServiceCard = ({ title, desc, icon: Icon, delay, className, children }: an
 );
 
 export default function Services() {
-  // ... (Kodun geri kalanı aynı) ...
-  // Özetle: Bu dosyadaki return kısmında <CTA /> BİLEŞENİ YOKTUR.
-  // Çünkü Home.tsx içinde <Services /> ve altında <CTA /> ayrı ayrı çağrılıyor.
   return (
     <section className="py-24 bg-gray-50">
       <div className="container mx-auto px-4">

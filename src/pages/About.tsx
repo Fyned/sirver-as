@@ -1,9 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Target, TrendingUp, Users, Award } from 'lucide-react';
-import Placeholder from '../components/ui/Placeholder';
 import CTA from '../components/sections/CTA';
-// Görsel Import
 import imgHQ from '../assets/images/about/hq-facility.jpg';
 
 export default function About() {

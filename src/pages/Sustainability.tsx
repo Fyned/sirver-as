@@ -1,9 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Leaf, RefreshCcw, Globe, Trees } from 'lucide-react';
-import Placeholder from '../components/ui/Placeholder';
 import CTA from '../components/sections/CTA';
-// Görsel Import
 import imgNature from '../assets/images/sustainability/forest-nature.jpg';
 
 export default function Sustainability() {
