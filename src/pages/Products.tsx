@@ -1,8 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Check, Zap, Leaf, BarChart3 } from 'lucide-react';
-import Placeholder from '../components/ui/Placeholder';
-import CTA from '../components/sections/CTA'; // YENİ EKLENDİ
+import CTA from '../components/sections/CTA';
+
+// IMPORT
+import imgWood from '../assets/images/services/wood-chips-closeup.jpg';
 
 export default function Products() {
   return (
@@ -14,7 +16,6 @@ export default function Products() {
 
       <main className="pt-32 pb-0">
         
-        {/* HERO */}
         <section className="container mx-auto px-4 mb-24 text-center">
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
@@ -31,13 +32,17 @@ export default function Products() {
            </motion.div>
         </section>
 
-        {/* ÜRÜN DETAYI */}
         <section className="container mx-auto px-4 mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
+            {/* GÖRSEL ALANI */}
             <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10" />
-               <Placeholder label="ODUN CİPSİ YAKIN ÇEKİM (HD)" className="h-full w-full border-none bg-gray-200" />
+               <img 
+                 src={imgWood} 
+                 alt="Odun Cipsi Yakın Çekim" 
+                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+               />
                
                <div className="absolute bottom-8 left-8 z-20 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-lg border-l-4 border-sirver-accent">
                   <div className="text-3xl font-heading font-bold text-sirver-secondary">~4.2 kWh/kg</div>
@@ -79,16 +84,15 @@ export default function Products() {
           </div>
         </section>
 
-        {/* TEKNİK TABLO */}
+        {/* ... Teknik Tablo ve Diğer Kısımlar (Aynı Kalıyor) ... */}
+        {/* KODUN GERİSİ AYNEN KORUNUYOR, SADECE IMG GÜNCELLENDİ */}
         <section className="bg-[#111827] text-white py-24 relative overflow-hidden">
            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sirver-primary/20 rounded-full blur-[120px] pointer-events-none" />
-
            <div className="container mx-auto px-4 relative z-10">
              <div className="text-center mb-16">
                <h2 className="text-3xl font-heading font-bold mb-4">TEKNİK SPESİFİKASYONLAR</h2>
                <p className="text-gray-400">ISO 17225-4 Standardına Göre Analiz Değerleri</p>
              </div>
-
              <div className="overflow-x-auto">
                <table className="w-full text-left border-collapse">
                  <thead>
@@ -153,7 +157,7 @@ export default function Products() {
               </div>
            </div>
         </section>
-
+        
         <CTA />
       </main>
     </>

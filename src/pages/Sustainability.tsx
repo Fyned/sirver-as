@@ -2,7 +2,9 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Leaf, RefreshCcw, Globe, Trees } from 'lucide-react';
 import Placeholder from '../components/ui/Placeholder';
-import CTA from '../components/sections/CTA'; // YENİ EKLENDİ
+import CTA from '../components/sections/CTA';
+// Görsel Import
+import imgNature from '../assets/images/sustainability/forest-nature.jpg';
 
 export default function Sustainability() {
   return (
@@ -72,9 +74,9 @@ export default function Sustainability() {
                 </div>
               </div>
               
-              <div className="h-[500px] rounded-3xl overflow-hidden relative">
-                 <Placeholder label="ORMAN / DOĞA FOTOSU" className="h-full w-full border-none" />
-                 <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur p-6 rounded-xl">
+              <div className="h-[500px] rounded-3xl overflow-hidden relative shadow-xl">
+                 <img src={imgNature} alt="Sürdürülebilir Orman" className="h-full w-full object-cover" />
+                 <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-lg">
                     <div className="flex items-center gap-4">
                        <RefreshCcw className="text-sirver-primary" size={32} />
                        <div>

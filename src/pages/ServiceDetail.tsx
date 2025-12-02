@@ -2,8 +2,21 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowLeft, FileText, BarChart, Settings, HelpCircle } from 'lucide-react';
-import Placeholder from '../components/ui/Placeholder';
 import CTA from '../components/sections/CTA';
+
+// GÖRSELLER
+import imgWood from '../assets/images/services/wood-chips-closeup.jpg';
+import imgBiomass from '../assets/images/services/biomass-energy.jpg';
+import imgForest from '../assets/images/services/forest-residue.jpg';
+import imgLogistics from '../assets/images/services/logistics-fleet.jpg';
+
+// GÖRSEL HARİTASI
+const serviceImages: any = {
+  "odun-cipsi": imgWood,
+  "biyokutle": imgBiomass,
+  "orman-atiklari": imgForest,
+  "lojistik": imgLogistics
+};
 
 // DETAYLI İÇERİK VERİTABANI
 const serviceData: any = {
@@ -102,8 +115,8 @@ const serviceData: any = {
 export default function ServiceDetail() {
   const { slug } = useParams();
   const data = serviceData[slug || ""];
+  const image = serviceImages[slug || ""];
 
-  // Eğer geçersiz bir linke tıklandıysa hizmetler sayfasına geri at
   if (!data) return <Navigate to="/hizmetler" />;
 
   return (
@@ -115,31 +128,41 @@ export default function ServiceDetail() {
 
       <main className="pt-24 pb-0 bg-gray-50">
         
-        {/* HEADER & NAVIGASYON */}
         <div className="container mx-auto px-4 py-8">
            <Link to="/hizmetler" className="inline-flex items-center gap-2 text-gray-500 hover:text-sirver-primary transition-colors mb-6 font-bold text-sm">
               <ArrowLeft size={18} /> Tüm Hizmetlere Dön
            </Link>
-           <h1 className="text-4xl md:text-5xl font-heading font-bold text-sirver-secondary mb-4">
+           <motion.h1 
+             initial={{ opacity: 0, x: -20 }}
+             animate={{ opacity: 1, x: 0 }}
+             className="text-4xl md:text-5xl font-heading font-bold text-sirver-secondary mb-4"
+           >
              {data.title}
-           </h1>
+           </motion.h1>
            <p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
              {data.desc}
            </p>
         </div>
 
-        {/* İÇERİK BLOKLARI */}
         <section className="container mx-auto px-4 mb-20">
            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               
-              {/* SOL: Görsel ve Özellikler */}
               <div className="lg:col-span-2 space-y-12">
-                 {/* Büyük Görsel */}
-                 <div className="h-[400px] md:h-[500px] bg-gray-200 rounded-3xl overflow-hidden relative shadow-lg">
-                    <Placeholder label={`${data.title.toUpperCase()} DETAY GÖRSELİ`} className="h-full w-full border-none" />
-                 </div>
+                 {/* GÖRSEL ALANI */}
+                 <motion.div 
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ delay: 0.2 }}
+                   className="h-[400px] md:h-[500px] bg-gray-200 rounded-3xl overflow-hidden relative shadow-lg"
+                 >
+                    <img 
+                      src={image} 
+                      alt={data.title} 
+                      className="h-full w-full object-cover" 
+                    />
+                 </motion.div>
 
-                 {/* Neden Biz? (Features) */}
+                 {/* Neden Biz? */}
                  <div>
                     <h3 className="text-2xl font-heading font-bold text-sirver-secondary mb-6 flex items-center gap-2">
                        <CheckCircle2 className="text-sirver-primary" /> Neden Tercih Edilmeli?
@@ -153,7 +176,7 @@ export default function ServiceDetail() {
                     </div>
                  </div>
 
-                 {/* Süreç Adımları (Process) */}
+                 {/* Süreç Adımları */}
                  <div>
                     <h3 className="text-2xl font-heading font-bold text-sirver-secondary mb-6 flex items-center gap-2">
                        <Settings className="text-sirver-accent" /> Operasyon Süreci
@@ -173,7 +196,6 @@ export default function ServiceDetail() {
               {/* SAĞ: Teknik Tablo ve Dosyalar */}
               <div className="space-y-8">
                  
-                 {/* Teknik Özellikler Tablosu */}
                  <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-sirver-primary">
                     <h3 className="text-xl font-bold text-sirver-secondary mb-6 flex items-center gap-2">
                        <BarChart className="text-sirver-primary" /> Teknik Veriler
@@ -188,7 +210,6 @@ export default function ServiceDetail() {
                     </div>
                  </div>
 
-                 {/* İndirilebilir Dosyalar */}
                  <div className="bg-sirver-secondary text-white p-8 rounded-2xl shadow-lg">
                     <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
                        <FileText className="text-sirver-accent" /> Dökümanlar
@@ -205,7 +226,6 @@ export default function ServiceDetail() {
                     </div>
                  </div>
 
-                 {/* SSS Kısa */}
                  <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
                     <div className="flex items-start gap-3">
                        <HelpCircle className="text-blue-600 shrink-0 mt-1" />

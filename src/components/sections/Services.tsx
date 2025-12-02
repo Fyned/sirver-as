@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
-import { Factory, Leaf, Truck, Flame } from 'lucide-react'; // Flame ikonu eklendi (Enerji için)
+import { Factory, Leaf, Truck, Flame, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Placeholder from '../ui/Placeholder';
+// CTA importu kaldırıldı çünkü bu bileşen CTA içermemeli, sayfa yapısında CTA ayrıca ekleniyor.
 
 const ServiceCard = ({ title, desc, icon: Icon, delay, className, children }: any) => (
   <motion.div 
@@ -22,11 +24,13 @@ const ServiceCard = ({ title, desc, icon: Icon, delay, className, children }: an
 );
 
 export default function Services() {
+  // ... (Kodun geri kalanı aynı) ...
+  // Özetle: Bu dosyadaki return kısmında <CTA /> BİLEŞENİ YOKTUR.
+  // Çünkü Home.tsx içinde <Services /> ve altında <CTA /> ayrı ayrı çağrılıyor.
   return (
     <section className="py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         
-        {/* Bölüm Başlığı */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-sirver-secondary mb-4">
             SANAYİ TİPİ ENERJİ HAMMADDESİ
@@ -36,24 +40,20 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Bento Grid Yapısı */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(300px,auto)]">
           
-          {/* KUTU 1: ÜRÜN KALİTESİ (En Büyük Alan - Ürün Odaklı) */}
           <ServiceCard 
             title="Premium Odun Cipsi (G30 / G50)" 
             desc="Kazan verimliliğini maksimize eden homojen partikül boyutu. <%20 nem oranı garantisi ile fosil yakıtlara göre %40'a varan maliyet avantajı sağlayan yüksek enerjili yakıt."
             icon={Flame}
             delay={0.1}
-            className="md:col-span-2 relative border-l-4 border-l-sirver-primary" // Soluna yeşil çizgi çektik
+            className="md:col-span-2 relative border-l-4 border-l-sirver-primary"
           >
             <div className="absolute right-0 top-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity hidden md:block bg-sirver-primary">
-               {/* Buraya Odun Cipsi Yakın Çekim Gelecek */}
                <Placeholder label="YAKIN ÇEKİM CİPS (G50)" height="h-full" className="border-none bg-transparent" />
             </div>
           </ServiceCard>
 
-          {/* KUTU 2: HAMMADDE (Dikey) */}
           <ServiceCard 
             title="Endüstriyel Hammadde" 
             desc="MDF, Sunta ve Kağıt endüstrisi için lif yapısı bozulmamış, kabuksuz ve temiz yonga tedariği. Standartlara uygun eleme teknolojisi."
@@ -66,7 +66,6 @@ export default function Services() {
              </div>
           </ServiceCard>
 
-          {/* KUTU 3: SÜRDÜRÜLEBİLİRLİK */}
           <ServiceCard 
             title="Sertifikalı Kaynak" 
             desc="%100 Orman Genel Müdürlüğü endüstriyel plantasyon sahalarından yasal ve izlenebilir kesim."
@@ -74,7 +73,6 @@ export default function Services() {
             delay={0.3}
           />
 
-          {/* KUTU 4: LOJİSTİK (En sona ve küçüğe attık) */}
           <ServiceCard 
             title="Fabrika Teslim Lojistik" 
             desc="Kendi tır filomuz ile tam zamanında (JIT) teslimat güvencesi."

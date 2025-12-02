@@ -2,7 +2,9 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Target, TrendingUp, Users, Award } from 'lucide-react';
 import Placeholder from '../components/ui/Placeholder';
-import CTA from '../components/sections/CTA'; // YENİ EKLENDİ
+import CTA from '../components/sections/CTA';
+// Görsel Import
+import imgHQ from '../assets/images/about/hq-facility.jpg';
 
 export default function About() {
   return (
@@ -12,7 +14,7 @@ export default function About() {
         <meta name="description" content="Sirver A.Ş., inşaat sektöründeki köklü tecrübesini biyokütle enerji sektörüne taşıyarak, sürdürülebilir ve yüksek kapasiteli hammadde tedariği sağlar." />
       </Helmet>
 
-      <main className="pt-32 pb-0"> {/* pb-0 yapıldı çünkü CTA kendi padding'ine sahip */}
+      <main className="pt-32 pb-0">
         
         {/* 1. GİRİŞ BÖLÜMÜ */}
         <section className="container mx-auto px-4 mb-20">
@@ -79,10 +81,10 @@ export default function About() {
               </div>
             </div>
             
-            <div className="order-1 lg:order-2 relative h-[500px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-sirver-primary to-sirver-secondary rounded-3xl transform rotate-3 opacity-20"></div>
+            <div className="order-1 lg:order-2 relative h-[500px] group">
+              <div className="absolute inset-0 bg-gradient-to-br from-sirver-primary to-sirver-secondary rounded-3xl transform rotate-3 opacity-20 transition-transform group-hover:rotate-0"></div>
               <div className="absolute inset-0 bg-white rounded-3xl shadow-2xl overflow-hidden">
-                 <Placeholder label="GENEL MÜDÜRLÜK / TESİS FOTOSU" className="h-full w-full border-none bg-gray-100" />
+                 <img src={imgHQ} alt="Genel Müdürlük ve Tesis" className="h-full w-full object-cover" />
               </div>
             </div>
           </div>
